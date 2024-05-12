@@ -24,3 +24,15 @@ add this line to your zshenv for sessionizer key bindings
 ```
 bindkey -s ^f "~/tmux-sessionizer\n"
 ```
+
+## For Ubuntu
+add this to .bashenv / .bashrc
+```
+# Define a function to execute the desired command
+tmux_sessionizer() {
+    ~/tmux-sessionizer
+}
+
+# Bind the function to the desired key combination
+bind '"\C-f":"tmux_sessionizer\n"'
+```
