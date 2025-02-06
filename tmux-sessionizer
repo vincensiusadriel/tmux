@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/go/src/github.com/lioenel ~/go/src/github.com/tokopedia ~/go/src/github.com/Jille ~/go/src/github.com/vincensiusadriel ~/go/src/github.com/vincensiusadrieltoped  ~/ ~/.config/ ~/personal/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/go/src/github.com/lioenel ~/go/src/code.byted.org/vincensius.adriel ~/go/src/code.byted.org/tokopedia ~/go/src/code.byted.org/oec ~/go/src/github.com/tokopedia ~/go/src/github.com/yonathandinata ~/go/src/github.com/keisku ~/go/src/github.com/Jille ~/go/src/github.com/otoolep ~/go/src/github.com/vincensiusadriel ~/go/src/github.com/vincensiusadrieltoped ~/ ~/.config/ ~/personal/ -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -18,11 +18,10 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -ds $selected_name -c $selected
 else
     tmux attach-session -t $selected_name
 fi
 
 tmux switch-client -t $selected_name
-
